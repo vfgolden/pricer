@@ -1,0 +1,31 @@
+Initial problem:
+No documented API set for retrieving GSA EIS pricing data. Typically pricing analysts have to input CLIN and NSC through EIS website.
+While the website is very good, this is a hugely time consuming task. Pricing entries can be in the thousands. A well-acquainted pricing analyst can document CLIN/NSC combos at a rate of 400 entries/hour.
+
+Approach:
+This problem seemed to need some form of automation to eliminate manual labor hours and human error. I evaluated multiple solutions, the first two came in the form of web browser automation.
+I first evaluated Selenium, but the new version of Firefox did not support SeleniumI then looked Katalon, which is similar to Selenium, and I was able to automate the keystrokes and data inputs.
+However, once I got past the simple first step examples, it became considerably more difficult, and the speed was not really that great.
+Ultimately, I determined these tools were meant for tests, and since this was not a user interface test, I decided to investigate having my program emulate a browser via code using Python and the python request library.
+
+Creating a solution:
+First I had to decompose the function of the EIS web page. For this task I used the developer tools inside of Firefox. I was able to click different processes and see where the web page communicated with the backend.
+I evaluated the request to identify the URLs being called. I identified the Headers (cookies) as well as the response coming back. I tested each URL call via my web browser to confirm function.
+After a thorough investigation of the complete process for one pricing lookup, I verified the feasibility of my approach.
+I selected Python as a language because of my background in Data Science from the Agricultural industry.
+I knew about the request library from work I have done before and knew that it could simulate any browser, as well as capture and maintain session variables for communication with the EIS website.
+Thereby, limiting the amount of development work I would have to perform.
+
+Final Solution:
+You can look at the code to see what it does. It is not intended to be a final solution. It will take work to maintain and support given the fact that it was built for one purpose and one purpose only.
+A complete run of approximately 6500 items now takes less than 13 minutes executing on my small consumer grade laptop.
+
+The requirements of execution for this program are:
+Python 2.7.x
+A compatible request library
+A .csv for input with the first two columns being CLIN and NSC (network site code).
+The output file name will be in the form of a .csv with columns being CLIN, NSC, Time Period Start, Time Period Stop, and all the vendor Prices.
+
+The GSA EIS website is a public interface, so there should be nothing proprietary about this information.
+
+I posted my solution on GitHub https://github.com/vfgolden/pricer
