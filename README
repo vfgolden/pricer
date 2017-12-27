@@ -26,6 +26,8 @@ A compatible request library
 A .csv for input with the first two columns being CLIN and NSC (network site code).
 The output file name will be in the form of a .csv with columns being CLIN, NSC, Time Period Start, Time Period Stop, and all the vendor Prices.
 
+NOTE: This program is currently coded for domestic values only.
+
 The GSA EIS website is a public interface, so there should be nothing proprietary about this information.
 
 I posted my solution on GitHub https://github.com/vfgolden/pricer
